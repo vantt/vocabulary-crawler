@@ -22,7 +22,17 @@ class Webster extends AbstractCrawler
     public function parseHTML($html)
     {
         $crawler = new Crawler($html);
-        return trim(trim($crawler->filter('.ld_on_collegiate')->text()), ':');
+        $item = $crawler->filter('.ld_on_collegiate');
+
+        if ($item->count() == 0) {
+            $item = $crawler->filter('.ssens');
+        }
+
+        if ($item->count()) {
+            return trim(trim($item->text()), ':');
+        }
+
+        return '';
     }
 
 }

@@ -1,8 +1,6 @@
 <?php
 namespace Vantt;
 
-use Symfony\Component\DomCrawler\Crawler;
-
 abstract class AbstractCrawler
 {
     protected $word;
@@ -11,7 +9,7 @@ abstract class AbstractCrawler
      * Google constructor.
      * @param $word
      */
-    public function __construct($word)
+    public function __construct($word = NULL)
     {
         $this->word = $word;
     }
@@ -35,9 +33,10 @@ abstract class AbstractCrawler
     /**
      * @return string
      */
-    public function getDefinition() {
+    public function getDefinition($word) {
+        $this->setWord($word);
         $html = $this->getHTML();
-        return $this->parseHTML($html);
+        return str_replace(PHP_EOL, '', trim($this->parseHTML($html)));
     }
 
 
