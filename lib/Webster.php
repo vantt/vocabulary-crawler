@@ -12,7 +12,7 @@ class Webster extends AbstractCrawler
     public function getHTML()
     {
         $url  = 'http://www.merriam-webster.com/dictionary/'.$this->getWord();
-        return file_get_contents($url);
+        return $this->client->get($url);
     }
 
     /**

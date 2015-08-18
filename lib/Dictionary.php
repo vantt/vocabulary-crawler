@@ -11,7 +11,7 @@ class Dictionary extends AbstractCrawler
     public function getHTML()
     {
         $url  = 'http://dictionary.reference.com/browse/'.$this->getWord();
-        return file_get_contents($url);
+        return $this->client->get($url);
     }
 
     /**

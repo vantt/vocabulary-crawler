@@ -1,9 +1,15 @@
 <?php
 namespace Vantt;
 
+use GuzzleHttp\Client;
+use GuzzleHttp\Exception\ClientException;
+use GuzzleHttp\Psr7\Response;
+
 abstract class AbstractCrawler
 {
     protected $word;
+
+    protected $client;
 
     /**
      * Google constructor.
@@ -12,6 +18,8 @@ abstract class AbstractCrawler
     public function __construct($word = NULL)
     {
         $this->word = $word;
+
+        $this->client = new Client();
     }
 
     /**
@@ -35,13 +43,23 @@ abstract class AbstractCrawler
      */
     public function getDefinition($word) {
         $this->setWord($word);
-        $html = $this->getHTML();
-        return str_replace(PHP_EOL, '', trim($this->parseHTML($html)));
+        try {
+            $response = $this->getHTML();
+
+            if ('200' == $response->getStatusCode()) {
+                return str_replace(PHP_EOL, '', trim($this->parseHTML((string)$response->getBody()->getContents())));
+            }
+        }
+        catch (ClientException $e) {
+
+        }
+
+        return '';
     }
 
 
     /**
-     * @return string
+     * @return Response
      */
     abstract public function getHTML();
 

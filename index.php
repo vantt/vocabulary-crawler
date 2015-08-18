@@ -6,7 +6,7 @@ use Vantt\Google;
 use Vantt\TheFreeDictionary;
 use Vantt\Webster;
 
-$parsers = [new Google(), new Webster(), new Dictionary(), new TheFreeDictionary()];
+$parsers = [new Webster(), new Dictionary(), new TheFreeDictionary()];
 
 set_time_limit(0);
 

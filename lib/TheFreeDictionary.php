@@ -12,7 +12,7 @@ class TheFreeDictionary extends AbstractCrawler
     public function getHTML()
     {
         $url  = 'http://www.thefreedictionary.com/'.$this->getWord();
-        return file_get_contents($url);
+        return $this->client->get($url);
     }
 
     /**
