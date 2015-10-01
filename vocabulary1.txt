@@ -1,0 +1,413 @@
+
+
+bye (-bye)
+come on!
+excuse me
+goodbye
+hello
+pardon
+please
+right
+see you
+sorry
+thank you
+thanks
+then
+well
+well done
+wow
+yes
+
+
+
+afraid
+all
+all right
+angry
+awake
+back
+bad
+beautiful
+best
+better
+big
+boring
+bottom
+busy
+careful
+clean
+clever
+closed
+cloudy
+cold
+correct
+different
+difficult
+dirty
+double
+easy
+English
+every
+exciting
+famous
+fat
+favourite
+fine
+first
+funny
+good
+great
+happy
+her
+his
+hot
+hungry
+its
+last
+long
+loud
+more
+most
+my
+naughty
+new
+nice
+old
+our
+quick
+quiet
+right (correct)
+round
+sad
+second
+short
+slow
+small
+sorry
+square
+straight
+strong
+surprised
+tall
+terrible
+their
+thin
+third
+thirsty
+tireci
+top
+ugly
+weak
+well
+wet
+windy
+worse
+worst
+wrong
+young
+your
+
+
+
+a/an
+all
+a lot of
+another
+any
+both
+every
+lots of
+many
+more
+most
+no
+one
+some
+that
+the
+these
+thb
+those
+
+
+
+a lot
+again
+all right
+always
+back
+badly
+best
+better
+carefully
+down
+downstairs
+first
+here
+how
+how much
+how often
+inside
+last
+lots
+loudly
+more
+most
+near
+never
+not
+now
+off
+often
+on
+only
+outside
+quickly
+quietly
+round
+slowly
+sometimes
+then
+there
+today
+too
+up
+upstairs
+very
+well
+when
+worse
+worst
+yesterday
+
+
+
+about
+above
+after
+at
+before
+behind
+below
+between
+from
+in (prep of place)
+in front of
+inside
+like
+near
+next to
+of
+off
+on
+on (prep of time)
+opposite
+out of
+outside
+round
+than
+to
+under
+up
+with
+
+
+and
+because
+but
+or
+than
+when
+
+
+
+all
+another
+both
+he
+her
+hers
+him
+his
+it
+its
+me
+mine
+more
+most
+nothing
+one
+ours
+she
+something
+that
+theus
+them
+these
+they
+this
+those
+us
+we
+which
+who
+you
+yours
+
+
+
+be
+bring
+buy
+catch (a ball)
+catch (a bus)
+choose
+come
+do
+draw
+drink
+drive
+eat
+find
+fly
+get
+get dressed
+get undressed
+get up
+give
+go
+go shopping
+have
+have got
+have got to
+hide
+hit
+hold
+hurt
+know
+learn
+lose
+make
+mean
+must
+put
+put on
+rain
+read
+ride
+run
+say
+see
+sing
+sit (down)
+sleep
+snow
+spefl
+stand (up)
+swim
+take
+take (a bus)
+take (a photo)
+take of}
+tell
+think
+throw
+understand
+wake up
+wear
+write
+
+
+
+
+add
+answer
+ask
+bounce
+call
+carry
+clean
+climb
+close
+cook
+colour
+complete
+cross
+cry
+dance
+dream
+drop
+email
+enjoy
+film
+fish
+help
+hop
+invite
+jump
+kick
+laugh
+learn
+like
+listen (to)
+live
+look
+look at
+look for
+love
+move
+need
+open
+paint
+phone
+pick up
+plant
+plug (with)
+point
+rain
+sail
+shop
+shout
+show
+skate
+skip
+smile
+snow
+start
+stop
+talk
+test
+text
+tick
+try
+video
+wait
+walk
+want
+wash
+watch
+wave
+work
+
+
+
+can/cannot/can't
+could
+must
+shall
+would
+
+
+
+how
+how many
+how much
+how often
+how old
+what
+when
+where
+which
+who
+whose
+why

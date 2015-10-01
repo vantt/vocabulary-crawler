@@ -23,13 +23,17 @@ while ($word = trim(read_and_delete_first_line(__DIR__.'/vocabulary.txt'))) {
     }
 }
 
+echo 'xong';
 
 function read_and_delete_first_line($filename) {
     $file = file($filename);
-    $output = $file[0];
-    unset($file[0]);
-    file_put_contents($filename, $file);
-    return $output;
+
+    if (!empty($file[0])) {
+        $output = $file[0];
+        unset($file[0]);
+        file_put_contents($filename, $file);
+        return $output;
+    }
 }
 
 function save_csv($filename, $row) {

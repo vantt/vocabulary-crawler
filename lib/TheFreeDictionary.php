@@ -2,6 +2,7 @@
 namespace Vantt;
 
 
+use Exception;
 use Symfony\Component\DomCrawler\Crawler;
 
 class TheFreeDictionary extends AbstractCrawler
@@ -22,7 +23,13 @@ class TheFreeDictionary extends AbstractCrawler
     public function parseHTML($html)
     {
         $crawler = new Crawler($html);
-        return trim($crawler->filter('#Definition section')->first()->text());
+
+        try {
+            return trim($crawler->filter('#Definition section')->first()->text());
+        }
+        catch (Exception $e) {
+            return '';
+        }
     }
 
 }

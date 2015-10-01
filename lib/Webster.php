@@ -2,6 +2,7 @@
 namespace Vantt;
 
 
+use Exception;
 use Symfony\Component\DomCrawler\Crawler;
 
 class Webster extends AbstractCrawler
@@ -22,14 +23,20 @@ class Webster extends AbstractCrawler
     public function parseHTML($html)
     {
         $crawler = new Crawler($html);
-        $item = $crawler->filter('.ld_on_collegiate');
 
-        if ($item->count() == 0) {
-            $item = $crawler->filter('.ssens');
+        try {
+            $item = $crawler->filter('.ld_on_collegiate');
+
+            if ($item->count() == 0) {
+                $item = $crawler->filter('.ssens');
+            }
+
+            if ($item->count()) {
+                return trim(trim($item->text()), ':');
+            }
         }
-
-        if ($item->count()) {
-            return trim(trim($item->text()), ':');
+        catch (Exception $e) {
+            return '';
         }
 
         return '';

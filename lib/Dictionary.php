@@ -1,6 +1,8 @@
 <?php
 namespace Vantt;
 
+
+use Exception;
 use Symfony\Component\DomCrawler\Crawler;
 
 class Dictionary extends AbstractCrawler
@@ -21,7 +23,13 @@ class Dictionary extends AbstractCrawler
     public function parseHTML($html)
     {
         $crawler = new Crawler($html);
-        return trim($crawler->filter('.def-list')->text());
+
+        try {
+            return trim($crawler->filter('.def-list')->text());
+        }
+        catch (Exception $e) {
+            return '';
+        }
     }
 
 }

@@ -1,6 +1,7 @@
 <?php
 namespace Vantt;
 
+use Exception;
 use Symfony\Component\DomCrawler\Crawler;
 
 class Google extends AbstractCrawler
@@ -18,6 +19,12 @@ class Google extends AbstractCrawler
      */
     public function parseHTML($html) {
         $crawler = new Crawler($html);
-        return trim($crawler->filter('#ires table')->text());
+
+        try {
+            return trim($crawler->filter('#ires table')->text());
+        }
+        catch (Exception $e) {
+            return '';
+        }
     }
 }

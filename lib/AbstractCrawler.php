@@ -27,7 +27,7 @@ abstract class AbstractCrawler
      */
     public function getWord()
     {
-        return $this->word;
+        return str_replace(' ', '+', $this->word);
     }
 
     /**
