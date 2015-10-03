@@ -58,6 +58,7 @@ class HttpRequest implements HttpRequestInterface
             $multi_part_vars[] = array('name' => $name, 'contents' => $data);
         }
 
+
         $response = $this->client->post($full_url, array('multipart' => $multi_part_vars, 'debug' => true, 'handler' => $tapMiddleware($clientHandler),'headers' => ['Referer' =>  $full_url]));
         return $response->getBody()->getContents();
     }
