@@ -4,7 +4,7 @@ namespace Vantt\Memrise;
 use GuzzleHttp\Client;
 use GuzzleHttp\Middleware;
 
-class HttpRequest implements HttpRequestInterface
+class GuzzleHttpRequest implements HttpRequestInterface
 {
     /**
      * @var Client
