@@ -1,7 +1,8 @@
 <?php
-namespace Vantt\Memrise;
+namespace Vantt\Memrise\Page;
 
 use Symfony\Component\DomCrawler\Crawler;
+use Vantt\Memrise\HttpRequestInterface;
 
 
 class BasePage

@@ -1,5 +1,8 @@
 <?php
-namespace Vantt\Memrise;
+namespace Vantt\Memrise\Page;
+
+use Vantt\Memrise\CourseInfo;
+use Vantt\Memrise\HttpRequestInterface;
 
 class WordSearchPage extends BasePage
 {

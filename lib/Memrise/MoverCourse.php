@@ -1,6 +1,8 @@
 <?php
 namespace Vantt\Memrise;
 
+use Vantt\Memrise\CourseInfo;
+
 class MoverCourse extends CourseInfo
 {
     public function __construct()

@@ -1,5 +1,7 @@
 <?php
-namespace Vantt\Memrise;
+namespace Vantt\Memrise\Page;
+
+use Vantt\Memrise\HttpRequestInterface;
 
 class AnphabePage extends BasePage
 {

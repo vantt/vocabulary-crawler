@@ -1,11 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: vantt
- * Date: 9/24/2015
- * Time: 8:45 PM
- */
-
 namespace Vantt\Memrise;
 
 use GuzzleHttp\Client;
