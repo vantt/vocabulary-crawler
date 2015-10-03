@@ -51,21 +51,22 @@ class BasePage
         return $this->html;
     }
 
-    protected function getFullUrl() {
+    public function getFullUrl() {
         return $this->base_url . $this->sub_url;
     }
 
-    protected function getPageCrawler()
+    protected function getPageCrawler($reset = FALSE)
     {
-        if (!$this->crawler) {
+        if (!$this->crawler || $reset) {
             $this->crawler = new Crawler($this->getHtml());
         }
 
         return $this->crawler;
     }
 
-    protected function getCsrfToken()
+    public function getCsrfToken()
     {
+
         if (!$this->csrf_token) {
             $script = $this->getPageCrawler()->filter('body > script')->first()->text();
             $matches = array();

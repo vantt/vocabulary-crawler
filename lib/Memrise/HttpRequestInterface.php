@@ -15,5 +15,5 @@ interface HttpRequestInterface
      */
     public function get($full_url);
 
-    public function post($full_url, array $multi_parts = array());
+    public function post($full_url, array $multi_parts = [], array $headers = []);
 }

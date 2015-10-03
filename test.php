@@ -2,14 +2,25 @@
 require './vendor/autoload.php';
 
 use GuzzleHttp\Client;
-use Symfony\Component\DomCrawler\Crawler;
 use Vantt\Memrise\HttpRequest;
 use Vantt\Memrise\LoginPage;
-use Vantt\Memrise\AnphabePage;
+use Vantt\Memrise\MoverCourse;
+use Vantt\Memrise\UploadPage;
+use Vantt\Memrise\WordSearchPage;
 
 $client = new Client(['cookies' => true, 'track_redirects' => true, 'headers' => ['User-Agent' => 'Mozilla/5.0 (Windows NT 6.1; WOW64; rv:40.0) Gecko/20100101 Firefox/40.1']]);
-//$page = new AnphabePage(new HttpRequest($client));
-$page = new LoginPage(new HttpRequest($client));
-$html = $page->doLogin();
+$http = new HttpRequest($client);
+$course = new MoverCourse();
+
+$page = new LoginPage($http);
+$page->doLogin();
+
+
+$page = new WordSearchPage($http, $course, 'mammal');
+$thing_id = $page->getThingId();
+$csrf_token = $page->getCsrfToken();
+$referer = $page->getFullUrl();
+$page = new UploadPage($http);
+$page->upload($csrf_token, $thing_id, 4, '/var/www/public/vocabulary-crawler/pictures/clothes/bag.jpg', $referer);
 
 echo $html;

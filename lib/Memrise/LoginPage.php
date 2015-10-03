@@ -17,7 +17,7 @@ class LoginPage extends BasePage
     public function doLogin()
     {
         $csrf_token = $this->getCsrfToken();
-        echo $csrf_token;
+        //echo $csrf_token;
         return $this->http->post($this->getFullUrl(), array('csrfmiddlewaretoken' => $csrf_token, 'username' => 'vantt', 'password' => 'hsmmhkkm', 'next' => ''), ['Referer' => $this->getFullUrl()]);
     }
 }

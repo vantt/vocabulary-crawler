@@ -33,13 +33,15 @@ class HttpRequest implements HttpRequestInterface
      */
     public function get($full_url)
     {
-        $response = $this->client->get($full_url, ['debug' => true]);
+        $options = ['debug' => true];
+        $response = $this->client->get($full_url, $options);
         return $response->getBody()->getContents();
     }
 
-    public function post($full_url, array $multi_parts = array())
+    public function post($full_url, array $multi_parts = [], array $headers = [])
     {
 
+        $options = ['debug' => true];
 
         // Grab the client's handler instance.
         $clientHandler = $this->client->getConfig('handler');
@@ -52,18 +54,33 @@ class HttpRequest implements HttpRequestInterface
             // {"foo":"bar"}
         });
 
+        $options['handler'] = $tapMiddleware($clientHandler);
 
         $multi_part_vars = array();
         foreach ($multi_parts as $name => $data) {
-            $multi_part_vars[] = array('name' => $name, 'contents' => $data);
+            if (is_array($data)) {
+                $data['name'] = $name;
+            }
+            else {
+                $data = ['name' => $name, 'contents' => $data];
+            }
+
+            $multi_part_vars[] = $data;
         }
 
+        $options['multipart'] = $multi_part_vars;
 
-        $response = $this->client->post($full_url, array('multipart' => $multi_part_vars, 'debug' => true, 'handler' => $tapMiddleware($clientHandler),'headers' => ['Referer' =>  $full_url]));
+        //$options['headers'] = ['Referer' =>  $full_url];
+        if (!empty($headers)) {
+            $options['headers'] = $headers;
+        }
+
+        $response = $this->client->post($full_url, $options);
+
         return $response->getBody()->getContents();
     }
 
-    public function post2($full_url, array $form_params = array())
+    /*public function post2($full_url, array $form_params = array())
     {
 
 
@@ -80,5 +97,5 @@ class HttpRequest implements HttpRequestInterface
 
         $response = $this->client->post($full_url, array('form_params' => $form_params, 'debug' => true, 'handler' => $tapMiddleware($clientHandler), 'headers' => ['Referer' =>  $full_url]));
         return $response->getBody()->getContents();
-    }
+    }*/
 }
