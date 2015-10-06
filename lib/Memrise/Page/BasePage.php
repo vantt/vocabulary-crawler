@@ -46,7 +46,7 @@ class BasePage
     protected function getHtml()
     {
         if (!$this->html) {
-            $this->html = $this->http->get($this->getFullUrl());
+            $this->html = $this->http->get($this->getFullUrl())->getResponseHTML();
         }
 
         return $this->html;

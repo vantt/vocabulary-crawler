@@ -3,6 +3,9 @@ namespace Vantt\Memrise;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Middleware;
+use GuzzleHttp\Psr7\Response;
+
+define('GUZZLE_DEBUG', FALSE);
 
 class GuzzleHttpRequest implements HttpRequestInterface
 {
@@ -10,6 +13,11 @@ class GuzzleHttpRequest implements HttpRequestInterface
      * @var Client
      */
     private $client;
+
+    /**
+     * @var Response
+     */
+    private $response;
 
     /**
      * HttpRequest constructor.
@@ -22,19 +30,19 @@ class GuzzleHttpRequest implements HttpRequestInterface
 
     /**
      * @param $full_url
-     * @return string
+     * @return $this
      */
     public function get($full_url)
     {
-        $options = ['debug' => true];
-        $response = $this->client->get($full_url, $options);
-        return $response->getBody()->getContents();
+        $options = ['debug' => GUZZLE_DEBUG];
+        $this->response = $this->client->get($full_url, $options);
+        return $this;
     }
 
     public function post($full_url, array $multi_parts = [], array $headers = [])
     {
 
-        $options = ['debug' => true];
+        $options = ['debug' => GUZZLE_DEBUG];
 
         // Grab the client's handler instance.
         $clientHandler = $this->client->getConfig('handler');
@@ -47,7 +55,7 @@ class GuzzleHttpRequest implements HttpRequestInterface
             // {"foo":"bar"}
         });
 
-        $options['handler'] = $tapMiddleware($clientHandler);
+        //$options['handler'] = $tapMiddleware($clientHandler);
 
         $multi_part_vars = array();
         foreach ($multi_parts as $name => $data) {
@@ -68,9 +76,23 @@ class GuzzleHttpRequest implements HttpRequestInterface
             $options['headers'] = $headers;
         }
 
-        $response = $this->client->post($full_url, $options);
+        $this->response = $this->client->post($full_url, $options);
 
-        return $response->getBody()->getContents();
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getStatusCode() {
+        return $this->response->getStatusCode();
+    }
+
+    /**
+     * @return string
+     */
+    public function getResponseHTML() {
+        return $this->response->getBody()->getContents();
     }
 
     /*public function post2($full_url, array $form_params = array())

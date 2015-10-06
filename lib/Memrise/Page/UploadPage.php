@@ -17,7 +17,7 @@ class UploadPage extends BasePage
 
     public function upload($csrf_token, $thing_id, $cell_id, $file_path)
     {
-        $response = $this->http->post(
+        $status = $this->http->post(
             $this->getFullUrl(),
             array(
                 'csrfmiddlewaretoken' => $csrf_token,
@@ -27,7 +27,9 @@ class UploadPage extends BasePage
                 'f' => ['contents' => fopen($file_path, 'r')] //'filename' => $filename,
             )
             //,['Referer' => $referer]
-        );
+        )->getStatusCode();
+
+        return (200 == $status);
     }
 
 
